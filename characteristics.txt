@@ -1,0 +1,25 @@
+has fur|Does it have fur?
+meows|Does it meow?
+barks|Does it bark?
+is small|Is it small?
+lives in water|Does it live in water?
+has scales|Does it have scales?
+can fly|Can it fly?
+has wings|Does it have wings?
+is large|Is it large?
+has trunk|Does it have a trunk?
+has tusks|Does it have tusks?
+roars|Does it roar?
+has mane|Does it have a mane?
+is social|Is it social?
+is solitary|Is it solitary?
+is nocturnal|Is it nocturnal?
+is domesticated|Is it domesticated?
+is herbivore|Is it an herbivore?
+is carnivore|Is it a carnivore?
+is omnivore|Is it an omnivore?
+has feathers|Does it have feathers?
+swims|Does it swim?
+runs fast|Does it run fast?
+climbs trees|Does it climb trees?
+is venomous|Is it venomous?

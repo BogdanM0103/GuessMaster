@@ -1,0 +1,20 @@
+Cat: has fur, meows, is small:0.8, is domesticated, is carnivore:0.9, is social:0.5
+Dog: has fur, barks, is small:0.3, is domesticated, is carnivore:0.8, is social
+Fish: lives in water, has scales, is small, swims, is carnivore:0.5
+Bird: has feathers, can fly:0.8, has wings, is small:0.7, is social:0.5
+Elephant: has fur:0.1, is large, has trunk, has tusks:0.8, is herbivore, is social:0.7
+Lion: has fur, roars, is large, has mane:0.8, is carnivore, is social:0.6
+Tiger: has fur, roars, is large, is carnivore, is solitary
+Frog: lives in water:0.7, is small, swims, is carnivore:0.6
+Snake: has scales, is small:0.5, is carnivore, is solitary, is venomous:0.5
+Rabbit: has fur, is small, is herbivore, is social:0.7, runs fast:0.8
+Hamster: has fur, is small, is domesticated, is nocturnal:0.8
+Parrot: has feathers, can fly, has wings, is small:0.8, is social:0.7
+Dolphin: lives in water, swims, is large:0.9, is carnivore:0.8, is social
+Shark: lives in water, has scales, is large, is carnivore, swims
+Penguin: has feathers, can fly:0, lives in water:0.8, is small:0.6, swims, is social:0.8
+Goat: has fur, is small:0.7, is domesticated, is herbivore, runs fast:0.6
+Cow: has fur, is large, is domesticated, is herbivore
+Horse: has fur, is large, is domesticated, runs fast
+Monkey: has fur, is small:0.7, is social, climbs trees, is omnivore
+Bear: has fur, is large, is carnivore:0.8, is solitary, runs fast:0.7
