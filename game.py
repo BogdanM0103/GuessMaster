@@ -28,6 +28,7 @@ class MainMenuScreen(QWidget):
         # --- Start Button ---
         self.start_button = QPushButton("Start", self)
         self.start_button.setFont(font_medium)
+        self.start_button.setStyleSheet(self.button_styles())  # Apply hover effect
         self.start_button.clicked.connect(self.start_game)
 
         layout.addStretch(1)
@@ -39,6 +40,21 @@ class MainMenuScreen(QWidget):
     def start_game(self):
         """Switch to the Game Screen"""
         self.stacked_widget.setCurrentIndex(1)  # Switch to GameScreen
+
+    def button_styles(self):
+        """Returns the stylesheet string for buttons with a hover effect."""
+        return """
+            QPushButton {
+                background-color: lightgray;
+                color: black;
+                border: 2px solid black;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            QPushButton:hover {
+                background-color: yellow;
+            }
+        """
 
 class GameScreen(QWidget):
     def __init__(self, stacked_widget):
@@ -74,9 +90,25 @@ class GameScreen(QWidget):
 
         for btn_text, btn in self.answer_buttons.items():
             btn.setFont(font_medium)
+            btn.setStyleSheet(self.button_styles())  # Apply hover effect
             layout.addWidget(btn)
 
         layout.addStretch(2)
+
+    def button_styles(self):
+        """Returns the stylesheet string for buttons with a hover effect."""
+        return """
+            QPushButton {
+                background-color: lightgray;
+                color: black;
+                border: 2px solid black;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            QPushButton:hover {
+                background-color: yellow;
+            }
+        """
 
 class MainWindow(QMainWindow):
     def __init__(self):
