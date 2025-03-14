@@ -16,7 +16,7 @@ class App(QMainWindow):
         super().__init__()
 
         self.setWindowTitle(APP_NAME)
-        self.setGeometry(100, 100, 800, 500)
+        self.setGeometry(0, 0, 1920, 1080)
         self.center_window()
 
         # Create the QStackedWidget
