@@ -1,14 +1,12 @@
 import sys
 
 from PyQt5.QtWidgets import (
-    QWidget, QVBoxLayout, QLabel, QPushButton, QMainWindow, QStackedWidget, QDesktopWidget, QApplication
+    QMainWindow, QStackedWidget, QDesktopWidget, QApplication
 )
-from PyQt5.QtGui import QFont
-from PyQt5.QtCore import Qt
 
-from StartScreen import StartScreen
-from QuestionScreen import QuestionScreen
-from GameOverScreen import GameOverScreen
+from res.StartScreen import StartScreen
+from res.QuestionScreen import QuestionScreen
+from res.GameOverScreen import GameOverScreen
 
 class App(QMainWindow):
     def __init__(self):
@@ -37,14 +35,3 @@ class App(QMainWindow):
         screen_center = QDesktopWidget().availableGeometry().center()
         frame_geom.moveCenter(screen_center)
         self.move(frame_geom.topLeft())
-        
-def main():
-    app = QApplication(sys.argv)
-    app.setFont(QFont("Times New Roman", 40))  # Global font for the app
-
-    window = App()
-    window.show()
-    sys.exit(app.exec_())
-
-if __name__ == "__main__":
-    main()
