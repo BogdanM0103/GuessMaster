@@ -7,12 +7,15 @@ from PyQt5.QtWidgets import (
 from res.StartScreen import StartScreen
 from res.QuestionScreen import QuestionScreen
 from res.GameOverScreen import GameOverScreen
+from res.config import (
+    APP_NAME
+)
 
 class App(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Guess Master")
+        self.setWindowTitle(APP_NAME)
         self.setGeometry(100, 100, 800, 500)
         self.center_window()
 

@@ -4,6 +4,18 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 
+from res.config import (
+    FONT,
+    FONT_SIZE_LARGE,
+    FONT_SIZE_SMALL,
+    PLACEHOLDER_QUESTION,
+    YES,
+    NO,
+    PROBABLY,
+    PROBABLY_NOT,
+    I_DONT_KNOW
+)
+
 class QuestionScreen(QWidget):
     def __init__(self, stacked_widget):
         super().__init__()
@@ -15,11 +27,11 @@ class QuestionScreen(QWidget):
         layout.setAlignment(Qt.AlignCenter)
 
         # Set fonts
-        font_large = QFont("Times New Roman", 40)  
-        font_medium = QFont("Times New Roman", 20)  
+        font_large = QFont(FONT, FONT_SIZE_LARGE)  
+        font_medium = QFont(FONT, FONT_SIZE_SMALL)  
 
         # Question Label
-        self.question_label = QLabel("Placeholder Question?", self)
+        self.question_label = QLabel(PLACEHOLDER_QUESTION, self)
         self.question_label.setFont(font_large)
         self.question_label.setAlignment(Qt.AlignCenter)
 
@@ -29,11 +41,11 @@ class QuestionScreen(QWidget):
 
         # Answer Buttons (Stacked Vertically)
         self.answer_buttons = {
-            "Yes": QPushButton("Yes"),
-            "No": QPushButton("No"),
-            "Probably": QPushButton("Probably"),
-            "Probably Not": QPushButton("Probably Not"),
-            "I Don't Know": QPushButton("I Don't Know"),
+            YES: QPushButton(YES),
+            NO: QPushButton(NO),
+            PROBABLY: QPushButton(PROBABLY),
+            PROBABLY_NOT: QPushButton(PROBABLY_NOT),
+            I_DONT_KNOW: QPushButton(I_DONT_KNOW),
         }
 
         for btn_text, btn in self.answer_buttons.items():
