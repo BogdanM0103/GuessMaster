@@ -10,16 +10,16 @@ class GameOverScreen(BaseScreen):
 
     def init_buttons(self):
         """Creates Yes/No buttons dynamically."""
-        buttons = {
-            YES: self.handle_yes,
-            NO: self.handle_no,
-        }
+        self.yes_button = QPushButton(YES, self)
+        self.yes_button.setFont(self.title_label.font())
+        self.yes_button.clicked.connect(self.handle_yes)
 
-        for text, callback in buttons.items():
-            btn = QPushButton(text, self)
-            btn.setFont(self.title_label.font())  # Same font size
-            btn.clicked.connect(callback)
-            self.layout().addWidget(btn)
+        self.no_button = QPushButton(NO, self)
+        self.no_button.setFont(self.title_label.font())
+        self.no_button.clicked.connect(self.handle_no)
+
+        self.layout().addWidget(self.yes_button)
+        self.layout().addWidget(self.no_button)
 
         self.play_again_button = QPushButton(REPLAY, self)
         self.play_again_button.setVisible(False)
@@ -37,6 +37,7 @@ class GameOverScreen(BaseScreen):
         """Update the label to show the guessed animal."""
         self.predicted_animal = animal
         self.title_label.setText(GUESS_ANSWER.format(animal=animal))
+        self.show_yes_no_buttons()  # Show Yes/No initially
 
     def handle_yes(self):
         """Handles when the user confirms the guess was correct."""
@@ -48,8 +49,17 @@ class GameOverScreen(BaseScreen):
         self.title_label.setText(FAILURE)
         self.show_final_buttons()
 
+    def show_yes_no_buttons(self):
+        """Shows Yes and No buttons at the start."""
+        self.yes_button.setVisible(True)
+        self.no_button.setVisible(True)
+        self.play_again_button.setVisible(False)
+        self.exit_button.setVisible(False)
+
     def show_final_buttons(self):
         """Replaces 'Yes' and 'No' with 'Play Again' and 'Exit'."""
+        self.yes_button.setVisible(False)
+        self.no_button.setVisible(False)
         self.play_again_button.setVisible(True)
         self.exit_button.setVisible(True)
 

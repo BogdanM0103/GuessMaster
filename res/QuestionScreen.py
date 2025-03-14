@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtGui import QFont
 from res.BaseScreen import BaseScreen
-from res.config import PLACEHOLDER_QUESTION, YES, NO, PROBABLY, PROBABLY_NOT, I_DONT_KNOW
+from res.config import PLACEHOLDER_QUESTION, YES, NO, PROBABLY, PROBABLY_NOT, I_DONT_KNOW, FONT, FONT_SIZE_SMALL
 
 class QuestionScreen(BaseScreen):
     def __init__(self, stacked_widget):
@@ -10,7 +10,7 @@ class QuestionScreen(BaseScreen):
 
     def init_buttons(self):
         """Creates answer buttons dynamically."""
-        font_medium = QFont("Times New Roman", 20)
+        font_medium = QFont(FONT, FONT_SIZE_SMALL)
         answers = [YES, NO, PROBABLY, PROBABLY_NOT, I_DONT_KNOW]
 
         for answer in answers:
