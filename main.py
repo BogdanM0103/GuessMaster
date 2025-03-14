@@ -7,9 +7,14 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import QFont
 from res.App import App
 
+from res.config import (
+    FONT,
+    FONT_SIZE_LARGE
+)
+
 def main():
     app = QApplication(sys.argv)
-    app.setFont(QFont("Times New Roman", 40))  # Global font for the app
+    app.setFont(QFont(FONT, FONT_SIZE_LARGE))  # Global font for the app
 
     window = App()
     window.show()
