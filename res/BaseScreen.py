@@ -1,5 +1,5 @@
 import os
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QScrollArea
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 from res.config import FONT, FONT_SIZE_LARGE, FONT_SIZE_SMALL
@@ -13,8 +13,17 @@ class BaseScreen(QWidget):
 
     def init_ui(self, title_text, button_text, button_callback):
         """Initialize the UI with a title and an optional button."""
-        layout = QVBoxLayout(self)
-        layout.setAlignment(Qt.AlignCenter)
+        # Scrollable area setup
+        scroll = QScrollArea(self)
+        scroll.setWidgetResizable(True)
+        content = QWidget()
+        scroll.setWidget(content)
+
+        self.layout_main = QVBoxLayout(self)
+        self.layout_main.addWidget(scroll)
+
+        self.content_layout = QVBoxLayout(content)
+        self.content_layout.setAlignment(Qt.AlignTop)
 
         # Set fonts
         font_large = QFont(FONT, FONT_SIZE_LARGE)
@@ -24,17 +33,18 @@ class BaseScreen(QWidget):
         self.title_label = QLabel(title_text, self)
         self.title_label.setFont(font_large)
         self.title_label.setAlignment(Qt.AlignCenter)
-        layout.addStretch(1)
-        layout.addWidget(self.title_label)
-        layout.addStretch(1)
+        self.content_layout.addWidget(self.title_label)
 
         # Button (if provided)
         if button_text and button_callback:
             self.button = QPushButton(button_text, self)
             self.button.setFont(font_medium)
             self.button.clicked.connect(button_callback)
-            layout.addWidget(self.button)
-            layout.addStretch(2)
+            self.content_layout.addWidget(self.button)
+
+    def layout(self):
+        """Override to return the content layout where widgets should be added."""
+        return self.content_layout
 
     def load_stylesheet(self):
         """Loads an external stylesheet for the application."""
