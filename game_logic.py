@@ -149,35 +149,24 @@ def fetch_data():
 
 def bayes_update(animals, answers):
     answers = {k: v.lower() for k, v in answers.items()}
-
-    likelihood_if_feature = {
-        "yes": 0.9,
-        "probably": 0.7,
-        "probably not": 0.3,
-        "no": 0.1,
-        "i dont know": 1.0
-    }
-
-    likelihood_if_not_feature = {
-        "yes": 0.1,
-        "probably": 0.3,
-        "probably not": 0.7,
-        "no": 0.9,
-        "i dont know": 1.0
-    }
-
     scores = {}
     n_animals = len(animals)
     prior = 1.0 / n_animals
 
+    ANSWER_WEIGHTS = {
+        "yes": {"feature": 0.95, "not_feature": 0.05},
+        "probably": {"feature": 0.75, "not_feature": 0.25},
+        "probably not": {"feature": 0.25, "not_feature": 0.75},
+        "no": {"feature": 0.05, "not_feature": 0.95},
+        "i dont know": {"feature": 1.0, "not_feature": 1.0},
+    }
+
     for animal, traits in animals.items():
         score = prior
         for characteristic, response in answers.items():
-            response = response.lower()
-            if response not in likelihood_if_feature:
-                continue
+            response_data = ANSWER_WEIGHTS.get(response, {"feature": 1.0, "not_feature": 1.0})
             w = traits.get(characteristic, 0)
-            factor = w * likelihood_if_feature[response] + (1 - w) * likelihood_if_not_feature[response]
+            factor = w * response_data["feature"] + (1 - w) * response_data["not_feature"]
             score *= factor
         scores[animal] = score
 
